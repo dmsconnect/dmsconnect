@@ -1,0 +1,22 @@
+{
+  "name": "@dmsconnect/constants",
+  "version": "0.0.0",
+  "description": "Configs for DMS Connect Monorepo",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup src/* --format esm,cjs --dts",
+    "dev": "yarn build --watch"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js"
+    }
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import "@dmsconnect/ui/globals.css";
+
+html,
+body {
+  overflow-y: hidden;
+}
