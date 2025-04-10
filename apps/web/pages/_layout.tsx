@@ -1,3 +1,4 @@
+import HeaderBreadcrumb from "@/components/header-breadcrumb";
 import MainNav from "@/components/main-nav";
 import UserNavSection from "@/components/user-nav-section";
 import { ApplicationConfig } from "@dmsconnect/constants";
@@ -42,7 +43,7 @@ const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
       <SidebarInset className="max-h-[calc(100svh-16px)] overflow-y-auto overflow-x-hidden flex flex-col flex-1 p-2">
         <header className="flex flex-row  min-h-8">
           <SidebarTrigger />
-          {/* <Breadcrumb /> */}
+          <HeaderBreadcrumb />
         </header>
         <div className="flex flex-col flex-1">{children}</div>
       </SidebarInset>
