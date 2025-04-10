@@ -1,4 +1,5 @@
-import { NavigationConfigs } from "@dmsconnect/constants";
+import { INavigationConfig, NavigationConfigs } from "@dmsconnect/constants";
+
 import {
   Collapsible,
   CollapsibleContent,
@@ -19,7 +20,7 @@ import Link from "next/link";
 function MainNav() {
   return (
     <SidebarContent>
-      {NavigationConfigs.map((navItem, index) => {
+      {NavigationConfigs.map((navItem: INavigationConfig, index) => {
         if (!navItem.subModules || navItem.subModules.length === 0) {
           return (
             <SidebarGroup key={index}>

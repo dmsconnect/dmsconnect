@@ -4,7 +4,7 @@ const ApplicationConfig = {
   appStatus: "Developmemt",
 };
 
-interface INavigationConfig {
+export interface INavigationConfig {
   moduleTitle: string;
   moduleDescription?: string;
   href: string;
