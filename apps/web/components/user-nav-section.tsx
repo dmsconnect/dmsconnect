@@ -1,7 +1,6 @@
 "use client";
 import getInitials from "@/utils/getInitials";
-import toBoolean from "@/utils/toBoolean";
-import { SignInButton, useClerk, useUser } from "@clerk/nextjs";
+import { useClerk, useUser } from "@clerk/nextjs";
 import { Avatar, AvatarFallback } from "@dmsconnect/ui/avatar";
 import { Button } from "@dmsconnect/ui/button";
 import {
@@ -22,47 +21,15 @@ import {
 import { Skeleton } from "@dmsconnect/ui/skeleton";
 import {
   BellIcon,
-  CreditCardIcon,
   LogOutIcon,
   MoreVerticalIcon,
   UserCircleIcon,
 } from "lucide-react";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import Link from "next/link";
 function UserNavSection() {
   const { isLoaded, user } = useUser();
-  const { signOut, openSignIn } = useClerk();
+  const { signOut } = useClerk();
   const isMobile = useIsMobile();
-  const router = useRouter();
-  const { query } = router;
-
-  const promptLogin =
-    typeof query.promptLogin === "string"
-      ? toBoolean(query.promptLogin)
-      : false;
-  const redirect =
-    typeof query.redirect === "string" ? query.redirect : undefined;
-
-  useEffect(() => {
-    if (promptLogin && isLoaded && !user) {
-      const options = {
-        forceRedirectUrl: redirect ? redirect : null,
-      };
-      openSignIn({ withSignUp: true, ...options });
-    }
-    if (promptLogin && isLoaded && user) {
-      const urlSearchParams = new URLSearchParams(
-        router.asPath.split("?")[1] ?? undefined
-      );
-      urlSearchParams.delete("promptLogin");
-      if (redirect) {
-        router.replace(`${redirect}?${urlSearchParams.toString()}`);
-      } else {
-        router.replace(`?${urlSearchParams.toString()}`);
-      }
-    }
-  }, [promptLogin, isLoaded, user, openSignIn, router, redirect]);
-
   if (!isLoaded) return <Skeleton className="min-h-9"></Skeleton>;
   if (isLoaded && user) {
     const initials = getInitials(
@@ -129,10 +96,6 @@ function UserNavSection() {
                   Account
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <CreditCardIcon />
-                  Billing
-                </DropdownMenuItem>
-                <DropdownMenuItem>
                   <BellIcon />
                   Notifications
                 </DropdownMenuItem>
@@ -150,9 +113,9 @@ function UserNavSection() {
   }
 
   return (
-    <SignInButton mode="modal" withSignUp>
-      <Button variant="ghost">Sign Up / Login</Button>
-    </SignInButton>
+    <Button variant="ghost" asChild>
+      <Link href={`/sign-in`}>Sign Up / Login</Link>
+    </Button>
   );
 }
 

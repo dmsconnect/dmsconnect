@@ -7,6 +7,7 @@ const ApplicationConfig = {
 export interface INavigationConfig {
   moduleTitle: string;
   moduleDescription?: string;
+  protected?: boolean;
   href: string;
   subModules?: INavigationConfig[];
 }
@@ -16,6 +17,7 @@ const NavigationConfigs: INavigationConfig[] = [
     moduleTitle: "Repository",
     moduleDescription: "Study Materials Repository",
     href: "/repository",
+    protected: true,
     subModules: [
       {
         moduleTitle: "Curriculum & Assessments",
@@ -39,6 +41,7 @@ const NavigationConfigs: INavigationConfig[] = [
   {
     moduleTitle: "Academic Tools",
     href: "/tools",
+    protected: true,
     subModules: [
       {
         moduleTitle: "CGPA Tracker",
@@ -55,6 +58,7 @@ const NavigationConfigs: INavigationConfig[] = [
     moduleDescription:
       "Connect with peers, faculty members and alumni. Stay updated with latest job opportunities",
     href: "/networking",
+    protected: true,
     subModules: [
       {
         moduleTitle: "Job Opportunities",
@@ -70,6 +74,7 @@ const NavigationConfigs: INavigationConfig[] = [
   },
   {
     moduleTitle: "Ask Live",
+    protected: true,
     href: "/live",
   },
   {
@@ -78,7 +83,7 @@ const NavigationConfigs: INavigationConfig[] = [
     subModules: [
       {
         moduleTitle: "Members",
-        moduleDescription: "Get to know about SMS Council Members",
+        moduleDescription: "Get to know about SMS Council Members", 
         href: "/members",
       },
       {

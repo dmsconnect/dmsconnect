@@ -1,20 +1,22 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import { NavigationConfigs } from "@dmsconnect/constants";
 import { NextRequest, NextResponse } from "next/server";
+import AuthUtilsInstance from "./utils/accessUtils";
 
-const isProtectedRoute = createRouteMatcher(
-  NavigationConfigs.map((navConfig) => `${navConfig.href}(.*)`)
-);
+const isProtectedRoute = createRouteMatcher(AuthUtilsInstance.protectedRoutes);
 
 function handleRouteAuthentication(
   sessionClaims: CustomJwtSessionClaims | null,
   req: NextRequest
 ) {
   if (isProtectedRoute(req) && !sessionClaims) {
-    console.error("Authentication Redirect ->", req.nextUrl.pathname);
-    return NextResponse.redirect(
-      `${req.nextUrl.origin}?redirect=${req.nextUrl.pathname}&promptLogin=true`
+    const redirectUrl = `${req.nextUrl.origin}/sign-in/?redirect=${encodeURIComponent(req.nextUrl.pathname)}`;
+    console.debug(
+      "Authentication Redirect ->",
+      req.nextUrl.pathname,
+      "->",
+      redirectUrl
     );
+    return NextResponse.redirect(redirectUrl);
   }
 }
 
