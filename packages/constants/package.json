@@ -4,6 +4,9 @@
   "description": "Configs for DMS Connect Monorepo",
   "main": "index.js",
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
     "build": "tsup src/* --format esm,cjs --dts",
     "dev": "yarn build --watch"

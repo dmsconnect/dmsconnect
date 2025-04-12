@@ -1,0 +1,39 @@
+name: Publish @dmsconnect/constants
+
+on:
+  push:
+    tags:
+      - "constants-v*.*.*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+    env:
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: "https://npm.pkg.github.com/"
+          scope: "@dmsconnect"
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build package
+        run: yarn build --filter=@dmsconnect/constants
+
+      - name: Publish to GitHub Packages
+        run: npm publish
+        working-directory: packages/constants
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
