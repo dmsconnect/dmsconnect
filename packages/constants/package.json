@@ -1,13 +1,15 @@
 {
   "name": "@dmsconnect/constants",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Configs for DMS Connect Monorepo",
   "main": "index.js",
   "license": "MIT",
   "publishConfig": {
+    "access": "restricted",
     "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
+    "create": "create-npmrc",
     "build": "tsup src/* --format esm,cjs --dts",
     "dev": "yarn build --watch"
   },
