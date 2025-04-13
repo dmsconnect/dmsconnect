@@ -27,7 +27,8 @@ jobs:
           registry-url: "https://npm.pkg.github.com/"
           scope: "@dmsconnect"
       - name: Debug
-        run: cat .npmrc
+        run: echo "${GITHUB_TOKEN}" &&\
+          cat .npmrc
 
       - name: Install dependencies
         run: yarn install
