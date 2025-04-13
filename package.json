@@ -4,6 +4,7 @@
   "scripts": {
     "publish:ci": "yarn workspace @dmsconnect/scripts run publish:ci $(pwd)",
     "build": "turbo run build",
+    "build:docker": "turbo run build:docker",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "start": "turbo run start",

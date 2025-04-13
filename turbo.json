@@ -1,6 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
+  "globalEnv": ["GITHUB_TOKEN"],
+  "globalPassThroughEnv": ["GITHUB_TOKEN"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
@@ -21,6 +23,15 @@
     "start": {
       "dependsOn": ["build"],
       "cache": false
+    },
+    "setup": {
+      "cache": true,
+      "inputs": [".env.*", ".env"],
+      "outputs": [".npmrc"]
+    },
+    "build:docker": {
+      "inputs": [".env.*", ".env"],
+      "dependsOn": ["setup"]
     }
   }
 }

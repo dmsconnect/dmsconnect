@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "publish:ci": "node ./src/publish.js"
+    "publish:ci": "node ./src/publish.js",
+    "create:npmrc": "sh ./bin/npm/create-npmrc.sh"
   }
 }

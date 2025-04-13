@@ -4,8 +4,10 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "setup": "GITHUB_TOKEN=$GITHUB_TOKEN yarn workspace @dmsconnect/scripts run create:npmrc $(pwd)",
     "dev": "next dev --turbopack --port 3000",
     "build": "next build",
+    "build:docker": "docker build -t dmsconnect/web:0.0.0 .",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit"
