@@ -26,6 +26,8 @@ jobs:
           node-version: "22"
           registry-url: "https://npm.pkg.github.com/"
           scope: "@dmsconnect"
+      - name: Debug
+        run: cat .npmrc
 
       - name: Install dependencies
         run: yarn install
