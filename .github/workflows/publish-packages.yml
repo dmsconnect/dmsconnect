@@ -2,7 +2,7 @@ name: Publish @dmsconnect/constants
 
 on:
   push:
-    tags: constants@*.*.*
+    branches: main
 
 jobs:
   publish:
@@ -28,15 +28,14 @@ jobs:
           scope: "@dmsconnect"
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
 
       - name: Build package
         run: yarn build --filter=@dmsconnect/constants
 
       - name: Publish constants
-        working-directory: packages/constants
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: yarn publish --access=restricted
+        run: yarn publish:ci

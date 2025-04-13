@@ -80,6 +80,11 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
+"@dmsconnect/constants@^0.0.1":
+  version "0.0.1"
+  resolved "https://npm.pkg.github.com/download/@dmsconnect/constants/0.0.1/2b20d3e89b60f11598601bf344a4825a1db6fbb4#2b20d3e89b60f11598601bf344a4825a1db6fbb4"
+  integrity sha512-+VPU2e6QPfEGwb1GSq+htmlxKe3tWEQoeCUEYfsP1mZULrNEziUjwphaK3aURqaWYlj4Y11g7WaPU5zEsojwww==
+
 "@emnapi/core@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@emnapi/core/-/core-1.4.0.tgz#8844b02d799198158ac1fea21ae2bc81b881da9a"

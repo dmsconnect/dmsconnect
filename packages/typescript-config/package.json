@@ -1,13 +1,12 @@
 {
   "name": "@dmsconnect/typescript-config",
   "version": "0.0.0",
-  "private": true,
   "license": "MIT",
   "main": "base.json",
   "files": [
     "*.json"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "restricted"
   }
 }

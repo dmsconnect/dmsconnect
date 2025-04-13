@@ -1,7 +1,11 @@
 {
   "name": "@dmsconnect/ui",
   "version": "0.0.0",
-  "private": true,
+  "description": "UI packages for DMS Connect Monorepo",
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
