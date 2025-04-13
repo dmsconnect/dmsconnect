@@ -26,10 +26,10 @@ jobs:
           node-version: "22"
           registry-url: "https://npm.pkg.github.com/"
           scope: "@dmsconnect"
-      - name: Create .npmrc
-        run: ./bin/npm/create-npmrc.sh
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # - name: Create .npmrc
+      #   run: ./bin/npm/create-npmrc.sh
+      #   env:
+      #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
