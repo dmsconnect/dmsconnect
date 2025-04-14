@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "publish:ci": "node ./src/publish.js",
-    "create:npmrc": "sh ./bin/npm/create-npmrc.sh"
+    "create:npmrc": "sh ./bin/npm/create-npmrc.sh",
+    "sync:env": "sh ./bin/vercel/sync-env.sh"
   }
 }

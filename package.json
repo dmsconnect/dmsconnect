@@ -2,9 +2,10 @@
   "name": "@dmsconnect/workspace",
   "private": true,
   "scripts": {
+    "preinstall": "GITHUB_TOKEN=$GITHUB_TOKEN yarn workspace @dmsconnect/scripts run create:npmrc $(pwd)",
     "publish:ci": "yarn workspace @dmsconnect/scripts run publish:ci $(pwd)",
+    "sync:env": "DOPPLER_TOKEN=$DOPPLER_TOKEN VERCEL_TOKEN=$VERCEL_TOKEN yarn workspace @dmsconnect/scripts run sync:env $(pwd)",
     "build": "turbo run build",
-    "build:docker": "turbo run build:docker",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "start": "turbo run start",
@@ -12,10 +13,10 @@
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "@dmsconnect/scripts": "^0.0.0",
     "prettier": "^3.5.3",
     "turbo": "^2.5.0",
-    "typescript": "5.8.2",
-    "@dmsconnect/scripts": "^0.0.0"
+    "typescript": "5.8.2"
   },
   "engines": {
     "node": ">=22"

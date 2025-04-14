@@ -9,6 +9,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
+    "preinstall": "GITHUB_TOKEN='$GITHUB_TOKEN' yarn workspace @dmsconnect/scripts run create:npmrc $(pwd)",
     "create": "create-npmrc",
     "build": "tsup src/* --format esm,cjs --dts",
     "dev": "yarn build --watch"

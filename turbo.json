@@ -28,10 +28,6 @@
       "cache": true,
       "inputs": [".env.*", ".env"],
       "outputs": [".npmrc"]
-    },
-    "build:docker": {
-      "inputs": [".env.*", ".env"],
-      "dependsOn": ["setup"]
     }
   }
 }

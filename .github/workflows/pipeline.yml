@@ -7,7 +7,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-
+    environment: production
     permissions:
       contents: read
       packages: write
@@ -38,5 +38,18 @@ jobs:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn publish:ci
-      - name: Build images
-        run: GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}} yarn build:docker
+      - name: Setup Vercel
+        run: yarn global add vercel@latest
+      - name: Link Vercel Project
+        run: |
+          vercel link --yes --token=${{secrets.VERCEL_TOKEN}}
+      - name: Push Secrets to Vercel
+        run: yarn sync:env
+        env:
+          DOPPLER_TOKEN: ${{secrets.DOPPLER_TOKEN}}
+          VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
+      - name: Pull Vercel Configs
+        run: vercel pull --yes --environment=preview --token=${{secrets.VERCEL_TOKEN}}
+      - name: Deploy to production environment
+        run: |
+          vercel deploy --token=${{secrets.VERCEL_TOKEN}}
