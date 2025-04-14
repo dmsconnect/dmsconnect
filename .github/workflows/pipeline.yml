@@ -1,4 +1,4 @@
-name: Prod Release 
+name: Prod Release
 on:
   push:
     branches: main
@@ -27,8 +27,6 @@ jobs:
           node-version: "22"
           registry-url: "https://npm.pkg.github.com/"
           scope: "@dmsconnect"
-      - name: Setup Registry
-        run: yarn setup
       - name: Setup Dopler CLI
         run: curl -sLf --retry 3 --retry-delay 2 https://cli.doppler.com/install.sh | sudo sh
       - name: Install dependencies
