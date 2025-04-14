@@ -2,7 +2,7 @@
   "name": "@dmsconnect/workspace",
   "private": true,
   "scripts": {
-    "setup": "GITHUB_TOKEN=$GITHUB_TOKEN yarn workspace @dmsconnect/scripts run create:npmrc $(pwd)",
+    "preinstall": "GITHUB_TOKEN=$GITHUB_TOKEN yarn workspace @dmsconnect/scripts run create:npmrc $(pwd)",
     "publish:ci": "yarn workspace @dmsconnect/scripts run publish:ci $(pwd)",
     "sync:env": "DOPPLER_TOKEN=$DOPPLER_TOKEN VERCEL_TOKEN=$VERCEL_TOKEN yarn workspace @dmsconnect/scripts run sync:env $(pwd)",
     "build": "turbo run build",
