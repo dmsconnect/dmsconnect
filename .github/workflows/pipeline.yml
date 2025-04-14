@@ -55,5 +55,5 @@ jobs:
       - name: Deploy to production environment
         run: |
           cp ./.env ./apps/web && \
-          vercel build --token=${{secrets.VERCEL_TOKEN}} --yes --prod --cwd ./apps/web  --token=${{secrets.VERCEL_TOKEN}} && \
-          vercel deploy --prebuilt --prod --cwd ./apps/web --token=${{secrets.VERCEL_TOKEN}}
+          vercel build --token=${{secrets.VERCEL_TOKEN}} --yes --prod --cwd ./apps/web  --token=${{secrets.VERCEL_TOKEN}} --project=dmsconnect && \
+          vercel deploy --prebuilt --prod --cwd ./apps/web --token=${{secrets.VERCEL_TOKEN}} --project=dmsconnect
