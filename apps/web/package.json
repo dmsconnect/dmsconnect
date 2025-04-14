@@ -4,7 +4,6 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "preinstall": "GITHUB_TOKEN=$GITHUB_TOKEN yarn workspace @dmsconnect/scripts run create:npmrc $(pwd)",
     "setup": "GITHUB_TOKEN=$GITHUB_TOKEN yarn workspace @dmsconnect/scripts run create:npmrc $(pwd)",
     "dev": "next dev --turbopack --port 3000",
     "build": "next build",

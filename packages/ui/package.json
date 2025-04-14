@@ -7,7 +7,6 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
-    "preinstall": "GITHUB_TOKEN='$GITHUB_TOKEN' yarn workspace @dmsconnect/scripts run create:npmrc $(pwd)",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
     "build": "tsup src/* --format esm,cjs --dts && tsup postcss.config.mjs --format esm,cjs --dts --out-dir dist/postcss",
