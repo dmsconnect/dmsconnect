@@ -37,6 +37,8 @@ jobs:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn publish:ci
+      - name: Download Environment Variables
+        run: doppler secrets download --no-file --format env > .env
       - name: Build Image
         run: |
           docker build . -t dmsconnect-webapp -f ./docker/webapp
