@@ -39,6 +39,8 @@ jobs:
         run: yarn publish:ci
       - name: Download Environment Variables
         run: doppler secrets download --no-file --format env > .env
+        env:
+          DOPPLER_TOKEN: ${{secrets.DOPPLER_TOKEN}}
       - name: Build Image
         run: |
           docker build . -t dmsconnect-webapp -f ./docker/webapp
