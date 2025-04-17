@@ -37,20 +37,6 @@ jobs:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn publish:ci
-      - name: Setup Vercel
-        run: npm i -g vercel@latest
-      - name: Link Vercel Project
+      - name: Build Image
         run: |
-          vercel link --yes --token=${{secrets.VERCEL_TOKEN}}
-      - name: Push Secrets to Vercel
-        run: yarn sync:env
-        env:
-          DOPPLER_TOKEN: ${{secrets.DOPPLER_TOKEN}}
-          VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
-      - name: Deploy to production environment
-        run: |
-          cp ./.npmrc ./apps/web
-          cp ./.env ./apps/web && \
-          vercel link --token=${{secrets.VERCEL_TOKEN}} --yes --project dmsconnect --cwd ./apps/web && \
-          vercel build --prod --yes --cwd ./apps/web --token=${{secrets.VERCEL_TOKEN}} && \
-          vercel deploy --prebuilt --prod --yes --cwd ./apps/web --token=${{secrets.VERCEL_TOKEN}}
+          docker build . -t dmsconnect-webapp -f ./docker/webapp

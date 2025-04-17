@@ -1,9 +1,20 @@
-version: "3.8"
-
 services:
-  web:
-    image: dmsconnect-web
+  postgres:
+    image: postgres:16
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: strongpassword
+      POSTGRES_DB: mydatabase
     ports:
-      - "3000:3000"
-    env_file:
-      - .env
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  webapp:
+    image: dmsconnect-webapp:latest
+    container_name: webapp
+    ports:
+      - 3001:3001
+volumes:
+  postgres_data:

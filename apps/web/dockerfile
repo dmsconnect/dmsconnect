@@ -1,0 +1,33 @@
+# Stage 1: Build the Next.js application
+FROM node:22-alpine AS builder
+WORKDIR /app
+
+# Copy package files and install dependencies
+COPY package.json ./
+COPY .npmrc ./
+RUN yarn install
+
+# Copy the rest of your application code
+COPY . .
+RUN ls -a
+# Build the Next.js app
+RUN yarn build
+
+# Stage 2: Prepare the production image
+FROM node:22-slim
+WORKDIR /app
+
+# Copy package files and install production dependencies
+COPY package.json ./
+COPY .npmrc ./
+RUN yarn install --production
+
+# Copy built artifacts from builder stage
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+
+# Expose the port Next.js runs on
+EXPOSE 3000
+
+# Start the Next.js application
+CMD ["yarn", "start"]

@@ -83,7 +83,7 @@ const NavigationConfigs: INavigationConfig[] = [
     subModules: [
       {
         moduleTitle: "Members",
-        moduleDescription: "Get to know about SMS Council Members", 
+        moduleDescription: "Get to know about SMS Council Members",
         href: "/members",
       },
       {
@@ -95,4 +95,18 @@ const NavigationConfigs: INavigationConfig[] = [
   },
 ];
 
-export { ApplicationConfig, NavigationConfigs };
+const protectedRoutes = [
+  ...NavigationConfigs.filter((nav) => nav.protected).map((nav) => nav.href),
+  "/account",
+];
+
+const protectedPattern = new RegExp(
+  `(${protectedRoutes.map((route) => `\\${route}`).join("|")})(/*)?`
+);
+
+export {
+  ApplicationConfig,
+  NavigationConfigs,
+  protectedPattern,
+  protectedRoutes,
+};
