@@ -360,11 +360,6 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@dmsconnect/constants@^0.0.1":
-  version "0.0.1"
-  resolved "https://npm.pkg.github.com/download/@dmsconnect/constants/0.0.1/2b20d3e89b60f11598601bf344a4825a1db6fbb4#2b20d3e89b60f11598601bf344a4825a1db6fbb4"
-  integrity sha512-+VPU2e6QPfEGwb1GSq+htmlxKe3tWEQoeCUEYfsP1mZULrNEziUjwphaK3aURqaWYlj4Y11g7WaPU5zEsojwww==
-
 "@emnapi/core@^1.4.0":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/@emnapi/core/-/core-1.4.1.tgz#1841d87508c70d9f3008da52a4a50579e03e5728"
@@ -2279,11 +2274,6 @@
   integrity sha512-6+7nlbMVX/PVDCwaIQ8nTOPveOcFLSt8GcXdx8hD0bt39uWxYT88uXzqTd4fTvqta7oeUJqudepapKNt2DYJFw==
   dependencies:
     tslib "^2.4.0"
-
-"@types/cookie@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.6.0.tgz#eac397f28bf1d6ae0ae081363eca2f425bedf0d5"
-  integrity sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==
 
 "@types/d3-array@^3.0.3":
   version "3.2.1"
@@ -6653,12 +6643,11 @@ react-router-devtools@^1.1.0:
     "@rollup/rollup-darwin-arm64" "^4.32.1"
     "@rollup/rollup-linux-x64-gnu" "^4.32.1"
 
-react-router@^7.5.0:
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-7.5.0.tgz#649568e7e3b4133dee1dcf333d8a3a37b1967f58"
-  integrity sha512-estOHrRlDMKdlQa6Mj32gIks4J+AxNsYoE0DbTTxiMy2mPzZuWSDU+N85/r1IlNR7kGfznF3VCUlvc5IUO+B9g==
+react-router@^7.5.2:
+  version "7.5.2"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-7.5.2.tgz#889137b9ce91dadc06eb40997f57f08199845973"
+  integrity sha512-9Rw8r199klMnlGZ8VAsV/I8WrIF6IyJ90JQUdboupx1cdkgYqwnrYjH+I/nY/7cA1X5zia4mDJqH36npP7sxGQ==
   dependencies:
-    "@types/cookie" "^0.6.0"
     cookie "^1.0.1"
     set-cookie-parser "^2.6.0"
     turbo-stream "2.4.0"
